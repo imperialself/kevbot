@@ -7,7 +7,7 @@ from kevbotconfig import *
 
 bot = commands.Bot(command_prefix='!')
 
-client = Client(account_sid, auth_token)
+#client = Client(account_sid, auth_token)
 users = {"Kevin": "+18056987435"}
 
 person = ""
@@ -32,6 +32,12 @@ async def on_ready():
 async def alert(ctx, arg1):
     SendMessage(arg1, "Get on Overwatch!")
     await ctx.send('Sending an SMS message to {} to play Overwatch right now!'.format(arg1))
+
+@bot.event
+async def on_member_update(before, after):
+    print(after.game)
+    SendMessage(Kevin,'test')
+
 
 
 bot.run(discordToken)
